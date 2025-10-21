@@ -1,97 +1,51 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# GetPayIn - React Native Coding Challenge
 
-# Getting Started
+This is a 3-page store application built with React Native and TypeScript as part of a coding challenge.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Features Implemented
 
-## Step 1: Start Metro
+*   **Authentication**: Login via DummyJSON API, with session restoration.
+*   **Biometric Unlock**: The app prompts for biometric authentication if a valid session token exists on launch.
+*   **Auto-Lock**: The app automatically locks after 10 seconds of inactivity or when it goes into the background.
+*   **Product & Category Lists**: Displays all products and allows filtering by a specific category.
+*   **Superadmin Role**: A designated user can see "Delete" buttons for products.
+*   **Offline Caching**: Uses React Query and MMKV to persist API requests, making content available offline and on relaunch.
+*   **Offline Indicator**: A simple banner shows when the device is offline.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Setup and How to Run
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+1.  **Prerequisites**: Ensure you have a React Native development environment set up. Follow the [official guide](https://reactnative.dev/docs/environment-setup) for the "React Native CLI Quickstart".
 
-```sh
-# Using npm
-npm start
+2.  **Clone the repository**:
+    ```bash
+    git clone <your-repo-url>
+    cd <your-repo-name>
+    ```
 
-# OR using Yarn
-yarn start
-```
+3.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-## Step 2: Build and run your app
+4.  **Install iOS Pods**:
+    ```bash
+    cd ios && pod install && cd ..
+    ```
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+5.  **Run the application**:
+    *   For Android: `npm run android`
+    *   For iOS: `npm run ios`
 
-### Android
+## Technical Choices & Information
 
-```sh
-# Using npm
-npm run android
+*   **Chosen Category for Specific Screen**: `smartphones`
+    *   This category was chosen as it has a good number of products in the DummyJSON API for demonstration.
 
-# OR using Yarn
-yarn android
-```
+*   **Superadmin User**: `kminchelle`
+    *   You can log in with this username (password: `0lelplR`) to see the "Delete" functionality on the All Products screen.
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+*   **Trade-offs and "If I had more time..."**:
+    *   **UI/Design System**: The UI is minimal and functional. With more time, I would have implemented a more robust design system with a proper theme (including dark mode), consistent spacing, and custom components instead of relying on default React Native ones.
+    *   **Error Handling**: Error handling is basic (using `Alert`). A better approach would be to use a centralized error handling service and display user-friendly messages like toasts or snackbars.
+    *   **Testing**: The project does not include tests. I would add unit tests for utility functions and Redux slices using Jest, and component/integration tests using React Native Testing Library.
+    *   **Password Fallback**: The biometric unlock fallback is simplified. A full implementation would involve a secure modal to re-enter the user's password.
