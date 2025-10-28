@@ -1,5 +1,5 @@
-import { API_BASE_URL } from "../../config";
-import { Product } from "../../types";
+import { API_BASE_URL } from "../config/index.js";
+import { Product } from "../types/index.ts";
 
 export const fetchAllProducts = async (): Promise<Product[]> => {
     const res = await fetch(`${API_BASE_URL}/products?limit=100`);
