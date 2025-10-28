@@ -69,3 +69,7 @@ const styles = StyleSheet.create({
 });
 
 export default LockOverlay;
+
+function alert(arg0: string) {
+  throw new Error('Function not implemented.');
+}
